@@ -1,32 +1,60 @@
+let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
+
+function randomNum(){
+    return Math.floor((Math.random() * 3) + 0);
+}
+
 function computerPlay() {
-    const randomNum = Math.floor((Math.random() * 3) + 0)
-    var choice = ["Rock", "Paper", "Scissors"]
-    return choice[randomNum]
+    let choice = ["rock", "paper", "scissors"];
+    return choice[randomNum()];
 }
 
-function playerPlay() {
-    var selection = prompt("Select your weapon (Rock, Paper, Scissors): ")
-    var choice = selection
-    return choice
+function playerPlay(){
+    return (prompt("Select your weapon (Rock, Paper, Scissors): ")).toLowerCase();
 }
-
-const computerSelection = computerPlay()
-const playerSelection = playerPlay()
 
 function playRound(playerSelection, computerSelection){
-    if (playerSelection == computerSelection) {
-        return "Nothing happend!";
-    } else if (playerSelection == "Rock" || computerSelection == "Paper"){
-        return "You lose! Paper beat Rock";
-    } else if (playerSelection == "Rock" || computerSelection == "Scissors"){
-        return "You win! Rock beat Scissors";
-    } else if (playerSelection == "Paper" || computerSelection == "Rock"){
-        return "You win! Paper beat Rock";
-    } else if (playerSelection == "Paper" || computerSelection == "Scissors"){
-        return "You lose! Scissors beat Paper";
-    } else if (playerSelection == "Scissors" || computerSelection == "Rock"){
-        return "You lose! Rock beat Scissors";
-    } else if (playerSelection == "Scissors" || computerSelection == "Paper"){
-        return "You win! Scissors beat Paper";
+    playerSelection = playerPlay();
+    if (playerSelection === computerSelection) {
+        alert("It's a draw");      
+    } else if ((playerSelection === "rock") && (computerSelection === "paper")){
+        computerScore += 1;
+        alert("You lose! Paper beat Rock");
+    } else if ((playerSelection === "rock") && (computerSelection === "scissors")){
+        playerScore += 1;
+        alert("You win! Rock beat Scissors");
+    } else if ((playerSelection === "paper") && (computerSelection === "rock")){
+        playerScore += 1;
+        alert("You win! Paper beat Rock");
+    } else if ((playerSelection === "paper") && (computerSelection === "scissors")){
+        computerScore += 1;
+        alert("You lose! Scissors beat Paper");
+    } else if ((playerSelection === "scissors" && computerSelection === "rock")){
+        computerScore += 1; 
+        alert("You lose! Rock beat Scissors");
+    } else if ((playerSelection === "scissors" && computerSelection === "paper")){
+        playerScore += 1;
+        alert("You win! Scissors beat Paper");
+    }else{
+        alert("Error!");
     }
 }
+
+function game(){
+    while (round != 0){
+        playRound(playerSelection, computerPlay())
+        round--;
+    }
+    if(playerScore > computerScore){
+        alert(`Congratulations. You win this game!\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`);
+    } else if(computerScore > playerScore) {
+        alert(`You lose this game.\nPlayer score: ${playerScore}\n\nComputer score: ${computerScore}`);
+    } else if(computerScore === playerScore){
+        alert(`It's a tie for this game.\nPlayer score: ${playerScore}\n\nComputer score: ${computerScore}`);
+    }
+}
+
+game();
