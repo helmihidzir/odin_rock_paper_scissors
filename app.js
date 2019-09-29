@@ -51,10 +51,12 @@ function game(){
     if(playerScore > computerScore){
         alert(`Congratulations. You win this game!\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`);
     } else if(computerScore > playerScore) {
-        alert(`You lose this game.\nPlayer score: ${playerScore}\n\nComputer score: ${computerScore}`);
+        alert(`You lose this game.\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`);
     } else if(computerScore === playerScore){
-        alert(`It's a tie for this game.\nPlayer score: ${playerScore}\n\nComputer score: ${computerScore}`);
+        alert(`It's a tie for this game.\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`);
     }
 }
 
-game();
+window.addEventListener('click', function() {
+    document.addEventListener('#game', game());
+})
