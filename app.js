@@ -1,7 +1,7 @@
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
-let round = 1;
+let round = 5;
 
 function randomNum(){
     return Math.floor((Math.random() * 3) + 0);
@@ -57,6 +57,4 @@ function game(){
     }
 }
 
-window.addEventListener('click', function() {
-    document.addEventListener('#game', game());
-})
+game()
