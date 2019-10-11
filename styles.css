@@ -4,8 +4,14 @@
     left: 43%;
 }
 
-#choice{
+#score{
     position: fixed;
-    top: 40%;
-    left: 43%;
+    top: 30%;
+    left: 45%;
+}
+
+#result{
+    position: fixed;
+    top: 42%;
+    left: 42%;
 }
